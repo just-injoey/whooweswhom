@@ -143,15 +143,7 @@ nav ul li a:hover{
   font-size: 50px;
 }
 
-/* .cards_section{
-  background-image: url("fluid-background.PNG");
-  width: 100%;
-  margin: 0;
-  height: 80vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -1;
-} */
+
 
 
 @media only screen and (max-width: 950px){
