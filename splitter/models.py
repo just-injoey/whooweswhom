@@ -1,13 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
 # Create your models here.
 
 class User(AbstractUser):
     pass
 
 class room(models.Model):
-    creator = models.ForeignKey(User,on_delete=models.CASCADE,related_name="creator")
+    creater = models.ForeignKey(User,on_delete=models.CASCADE,related_name="creater")
     name = models.CharField(max_length=250)
     members = models.ManyToManyField(User,through="room_members")
 
@@ -35,6 +34,7 @@ class transaction(models.Model):
     def __str__(self):
         return self.reason + ' in group ' + self.room.name
 
+
 class debt(models.Model):
     room = models.ForeignKey(room,on_delete = models.CASCADE, related_name = 'room_debts')
     transaction = models.ForeignKey(transaction, on_delete = models.CASCADE, related_name = 'transactions_debt')
@@ -60,7 +60,6 @@ class Personal_income(models.Model):
 
     def __str__(self):
         return self.description
-
 
 class Personal_expense(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE)

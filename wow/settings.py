@@ -16,6 +16,7 @@ from pathlib import Path, os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -37,7 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
     'splitter',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -133,6 +140,50 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
+   "django.contrib.auth.backends.ModelBackend",
+   "allauth.account.auth_backends.AuthenticationBackend",
 )
+
+
+SITE_ID = 2
+
+LOGIN_REDIRECT_URL = "/"
+
+SOCIALACCOUNT_PROVIDERS = {
+"google": {
+    "APP": {
+        "client_id": "245193825153-crbolov9msa9tbhfpvcccqrhch8s67qv.apps.googleusercontent.com",
+        "secret": "kkUzuMTDex4sCNvHgCoLNaLb",
+    },
+},
+}
+
+# SOCIALACCOUNT_PROVIDERS = {
+# "google": {
+#     "APP": {
+#         "client_id": "947250457248-oo6m984j7hl99jvjeha24hgqkkkeuim9.apps.googleusercontent.com",
+#         "secret": "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",
+#     },
+# },
+# }
+
+# SOCIALACCOUNT_PROVIDERS = {
+#    'google': {
+#       'APP':{
+#         'client_id': os.environ['947250457248-oo6m984j7hl99jvjeha24hgqkkkeuim9.apps.googleusercontent.com'],
+#         'secret': os.environ['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'],
+#       }
+#    }
+# }
+# SOCIALACCOUNT_PROVIDERS = {
+#    'google': {
+#       'SCOPE': [
+#          'profile',
+#          'email',
+#       ],
+#       'AUTH_PARAMS': {
+#          'access_type': 'online',
+#       }
+#    }
+# }
+

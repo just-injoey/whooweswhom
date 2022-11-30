@@ -1,0 +1,226 @@
+{%load static%}
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Final Budget, Total Income, Total Expense">
+    <meta name="description" content="">
+    <title>PersonalBudgetNew</title>
+    <link rel="stylesheet" href="{% static 'css/nicepage.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'css/PersonalBudgetNew.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static 'js/jquery.js' %}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static 'js/nicepage.js' %}" defer=""></script>
+    <meta name="generator" content="Nicepage 5.0.7, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    
+    
+    
+    {% comment %} <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "img/default-logo.png"
+}</script> {% endcomment %}
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="PersonalBudgetNew">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-palette-3-dark-3 u-header" id="sec-7d69"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <a href="https://nicepage.com" class="u-image u-logo u-image-1">
+          <img src="{% static 'assets/img/default-logo.png' %}" class="u-logo-image u-logo-image-1">
+        </a>
+
+        {% comment %} <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+          <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+              <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
+              <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+</g></svg>
+            </a>
+          </div>
+          <div class="u-nav-container">
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Home.html" style="padding: 10px 20px;">Home</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="PersonalBudgetNew.html" style="padding: 10px 20px;">PersonalBudgetNew</a>
+</li></ul>
+          </div>
+          <div class="u-nav-container-collapse">
+            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+              <div class="u-inner-container-layout u-sidenav-overflow">
+                <div class="u-menu-close"></div>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">Home</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="PersonalBudgetNew.html">PersonalBudgetNew</a>
+</li></ul>
+              </div>
+            </div>
+            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          </div>
+        </nav> {% endcomment %}
+        <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+          <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+              <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
+              <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+</g></svg>
+            </a>
+          </div>
+          <div class="u-nav-container">
+            <ul class="u-nav u-unstyled u-nav-1">
+              {% if user.is_authenticated %}
+              <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'splitter:my_debts' %}" style="padding: 10px 20px;">My Debts</a></li>
+              <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'splitter:room_list' %}" style="padding: 10px 20px;">My Rooms</a></li>
+              <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'splitter:personal_budget' %}" style="padding: 10px 20px;">Personal Budgets</a></li>
+              {% comment %} <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'splitter:PersonalBudgetNew' %}" style="padding: 10px 20px;">Personal Budgets</a></li> {% endcomment %}
+              <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'splitter:logout' %}" style="padding: 10px 20px;">Logout</a></li>
+              <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#" style="padding: 10px 20px;">{{ user.username }}</a></li>
+              {% else %}
+              <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'splitter:joinus' %}" style="padding: 10px 20px;">Join Us</a></li>
+              {% endif %}
+            </ul>
+          </div>
+          {% comment %} <div class="u-nav-container-collapse">
+            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+              <div class="u-inner-container-layout u-sidenav-overflow">
+                <div class="u-menu-close"></div>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">Home</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="About.html">About</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contact.html">Contact</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Join-Us.html">Join Us</a>
+</li></ul>
+              </div>
+            </div>
+            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          </div> {% endcomment %}
+        </nav>  
+      </div></header>
+    <section class="u-align-left u-clearfix u-image u-shading u-section-1" id="sec-1751" data-image-width="1260" data-image-height="630">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <div class="u-align-center u-container-style u-grey-5 u-group u-opacity u-opacity-0 u-group-1">
+          <div class="u-container-layout u-container-layout-1">
+            <h1 class="u-text u-text-body-alt-color u-text-default u-text-1">Final Budget  {{ total_bud }}</h1>
+            {% comment %} <h2>{{ total_bud }}</h2> {% endcomment %}
+            <h2 class="u-text u-text-body-alt-color u-text-default u-text-2">Total Income {{ total_income }}</h2>
+            <h2 class="u-text u-text-body-alt-color u-text-defaul u-text-3">Total Expense {{ total_expenses }}</h2>
+             
+            {% comment %} </h1> {% endcomment %}
+          </div>
+        </div>
+      </div>
+      
+<div class="budget-form">
+  <form action="{% url 'splitter:add_personal_budget' %}" method="post">
+    {% csrf_token %}
+    <select id="type" name="type" class="form-inputs">
+        <option value="inc">+</option>
+        <option value="exp">-</option>
+    </select>
+    <input type="text" name="description" placeholder="Description" class="form-inputs">
+    <input type="text" name="amount" placeholder="Amount" class="form-inputs">
+    <input type="submit" class="form-inputs btn btn-primary">
+  </form>
+</div>
+
+
+<div class="budget-bottom">
+  <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <h2>Income</h2>
+        <div class="budget-info-list income">
+          {% for income in incomes %}
+          <div class="item clearfix">
+            <div class="item__description">{{ income.description }}</div>
+              <div class="right clearfix">
+                  <div class="item__value">{{ income.amount }}</div>
+                  <a href="" data-target="#id_{{ income.pk }}" data-toggle="modal">
+                  <div class="item__delete">
+                      <button class="item__delete--btn"><i class="fal fa-times-circle"></i></button>
+                  </div>
+                  </a>
+              </div>
+
+         <div class="modal fade" tabindex="-1" role="dialog" id="id_{{ income.pk }}" data-backdrop="static" data-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+           <div class="modal-dialog modal-dialog-centered">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h5 class="modal-title">Delete {{ income.description }} Income</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                 </button>
+               </div>
+               <div class="modal-body">
+                 <form action="{% url 'splitter:delete_personal_income' pk=income.pk %}" method="post">
+                   {% csrf_token %}
+                   <input type="submit" value="Yes" class="btn btn-primary">
+                 </form>
+               </div>
+             </div>
+           </div>
+         </div>
+         </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <h2>Expense</h2>
+        <div class="budget-info-list expenses">
+          {% for expense in expenses %}
+          <div class="item clearfix">
+            <div class="item__description">{{ expense.description }}</div>
+              <div class="right clearfix">
+                  <div class="item__value">{{ expense.amount }}</div>
+                  <a href="" data-target="#id_{{ expense.pk }}" data-toggle="modal">
+                  <div class="item__delete">
+                      <button class="item__delete--btn"><i class="fal fa-times-circle"></i></button>
+                  </div>
+                  </a>
+              </div>
+
+         <div class="modal fade" tabindex="-1" role="dialog" id="id_{{ expense.pk }}" data-backdrop="static" data-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+           <div class="modal-dialog modal-dialog-centered">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h5 class="modal-title">Delete {{ expense.description }} Expense</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                 </button>
+               </div>
+               <div class="modal-body">
+                 <form action="{% url 'splitter:delete_personal_expense' pk=expense.pk %}" method="post">
+                   {% csrf_token %}
+                   <input type="submit" value="Yes" class="btn btn-primary">
+                 </form>
+               </div>
+             </div>
+           </div>
+         </div>
+        </div>
+          {% endfor %}
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+    </section>
+    <section class="u-clearfix u-container-align-center u-image u-shading u-section-2" id="sec-11d1" data-image-width="1600" data-image-height="900">
+      <div class="u-clearfix u-sheet u-sheet-1"></div>
+    </section>
+    
+    
+    
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-cbf9"><div class="u-clearfix u-sheet u-sheet-1">
+        <blockquote class="u-text u-text-default u-text-1"> Copyright © 2022 - W.O.W.</blockquote>
+      </div></footer>
+    <section class="u-backlink u-clearfix u-grey-80">
+      <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
+        <span>Website Templates</span>
+      </a>
+      <p class="u-text">
+        <span>created with</span>
+      </p>
+      <a class="u-link" href="" target="_blank">
+        <span>Website Builder Software</span>
+      </a>. 
+    </section>
+  
+</body></html>

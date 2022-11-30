@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  body{
+    color: #434343;
+    background: #dfe7e9;
+    font-family: 'Varela Round', sans-serif;
+    padding-top: 160px;
+  }
+</style>
+
+{% comment %} <div class="modal fade" tabindex="-1" role="dialog" id="{{ income.sender.username }}_{{ income.pk }}" data-backdrop="static" data-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true"> {% endcomment %}
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          {% comment %} <h5 class="modal-title">Settle Debt of {{ incomes.sender.username }} for {{ incomes.transaction.reason }}</h5> {% endcomment %}
+          <h5 class="modal-title">Settle Debt of {{ usname}} for {{ t_reason }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {% comment %} <form action="{% url 'splitter:delete_debt' pk=incomes.pk %}" method="post"> {% endcomment %}
+          <form action="{% url 'splitter:delete_debt' pk=pkey %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Yes" class="btn btn-primary">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% comment %} {% endfor %} {% endcomment %}
+  {% comment %} {% endif %} {% endcomment %}
+</div>
+</div>
+<div class="my-debts-expense">
+<h1>Amounts to pay:</h1>
+<div class="row">
+  {% if expenses.count == 0 %}
+  <h4>No amounts to pay!!!</h4>
+  {% else %}
+  {% for expense in expenses %}
+  <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+    <div class="my-debts-expense-info">
+      <h4>{{ expense.amount }}</h4>
+      <p>Give to {{ expense.receiver.username }}</p>
+      <p>For {{ expense.transaction.reason }}</p>
+      <p>Room {{ expense.room.name }}</p>
+      <p>{{ expense.transaction.created_at }}</p>
+    </div>
+  </div>
+  {% endfor %}
+  {% endif %}
+</div>
+</div>
+<a href="{% url 'splitter:final_settlements' %}" class="btn btn-primary final-debts-button">Show Final Debts</a>
+</div>
+</div>
+
+
+{% endblock %}
