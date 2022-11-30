@@ -156,8 +156,8 @@ LOGIN_REDIRECT_URL = "/"
 SOCIALACCOUNT_PROVIDERS = {
 "google": {
     "APP": {
-        "client_id": "788851246302-isb6ahrlrvhisvrq3bmuekjq9jr74f0h.apps.googleusercontent.com",
-        "secret": "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",
+        "client_id": "1092558667191-i0sadi4at7qgbp0hkf9l1ce0182ocomq.apps.googleusercontent.com",
+        "secret": "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",
     },
 },
 }
