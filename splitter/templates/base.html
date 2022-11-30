@@ -40,7 +40,7 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'splitter:room_list' %}">My Rooms</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'splitter:personal_budget' %}">Personal Budgets</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'splitter:logout' %}">Logout</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">{{ user.username }}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'splitter:home' %}">{{ user.username }}</a></li>
                         {% else %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'splitter:joinus' %}"><p>Join Us</p></a></li>
                         {% endif %}
