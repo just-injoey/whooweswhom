@@ -1,5 +1,4 @@
-
-# <b>URL:</b> https://whooweswhom-production.up.railway.app/splitter/
+<h1><b>URL:</b></h1> https://whooweswhom-production.up.railway.app/splitter/
 
 # Contributors:
 * [Harsh Kochgavey](https://github.com/hkochgavey)
